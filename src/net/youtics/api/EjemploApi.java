@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class EjemploApi {
 
@@ -18,6 +19,15 @@ public class EjemploApi {
                 conn.connect();
                 //obtener codigo de respuesta
                 int codigo = conn.getResponseCode();
+                if(codigo==200)
+                {
+                    StringBuilder info = new StringBuilder();
+                    Scanner scanner = Scanner(url.openStream());
+                    while (scanner.hasNext())
+                    {
+                        info.append(scanner.nextLine());
+                    }
+                }
                 System.out.println("codigo = " + codigo);
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
