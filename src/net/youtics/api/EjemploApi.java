@@ -9,11 +9,12 @@ import java.util.Scanner;
 public class EjemploApi {
 
     public static void main(String[] args) {
+
         URL url;
         String key = "32ff831d1132458fa0835b4fdea6cb23";
         {
             try {
-                url = new URL("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=32ff831d1132458fa0835b4fdea6cb23");
+                url = new URL("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey="+key);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.connect();
@@ -22,11 +23,12 @@ public class EjemploApi {
                 if(codigo==200)
                 {
                     StringBuilder info = new StringBuilder();
-                    Scanner scanner = Scanner(url.openStream());
+                    Scanner scanner = new Scanner(url.openStream());
                     while (scanner.hasNext())
                     {
                         info.append(scanner.nextLine());
                     }
+                    System.out.println("info = " + info);
                 }
                 System.out.println("codigo = " + codigo);
             } catch (MalformedURLException e) {

@@ -20,6 +20,7 @@ public class PilaGenerica implements Iterable{
 
 
     public void addGenerico(Object objeto) {
+
         listaNumeros.add(0,objeto);
     }
 
